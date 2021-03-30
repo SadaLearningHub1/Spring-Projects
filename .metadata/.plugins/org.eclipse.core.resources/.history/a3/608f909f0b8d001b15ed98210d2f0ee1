@@ -1,0 +1,7 @@
+package pack;
+
+public class TypesOFInjections {
+	//1. Setter Injection
+	//2. Construction injection
+	//3. Interface injection
+}

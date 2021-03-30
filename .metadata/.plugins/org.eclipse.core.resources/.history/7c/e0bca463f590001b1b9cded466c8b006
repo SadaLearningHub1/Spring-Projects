@@ -1,0 +1,12 @@
+
+public class DemoBean {
+	private String msg;
+	//setter injection
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public void showMessage() {
+		System.out.println(msg);
+	}
+
+}

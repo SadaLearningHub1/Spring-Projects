@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;28SpringMVCConfigDispatcherServlet&apos;&#x0D;&#x0A;- Original project: &apos;28SpringMVCConfigDispatcherServlet&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     28SpringMVCConfigDispatcherServlet/src/main/java/client&#x0D;&#x0A;     28SpringMVCConfigDispatcherServlet/src/main/java/dao&#x0D;&#x0A;     28SpringMVCConfigDispatcherServlet/src/main/java/dao.impl&#x0D;&#x0A;     28SpringMVCConfigDispatcherServlet/src/main/java/model" description="Delete elements" element1="/src\/main\/java&lt;model" element2="/src\/main\/java&lt;dao.impl" element3="/src\/main\/java&lt;dao" element4="/src\/main\/java&lt;client" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1528734394870" subPackages="false" version="1.0"/>
+</session>

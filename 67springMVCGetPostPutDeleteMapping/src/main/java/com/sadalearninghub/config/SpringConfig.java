@@ -1,0 +1,40 @@
+package com.sadalearninghub.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.util.UrlPathHelper;
+
+@EnableWebMvc
+@Configuration
+@ComponentScan({"com.sadalearninghub.controller"})
+public class SpringConfig extends WebMvcConfigurerAdapter {
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
+
+	@Bean
+	public InternalResourceViewResolver viewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setViewClass(JstlView.class);
+		viewResolver.setPrefix("/WEB-INF/views/jsp/");
+		viewResolver.setSuffix(".jsp");
+		return viewResolver;
+	}
+
+	@Override
+	public void configurePathMatch(PathMatchConfigurer configurer) {
+		UrlPathHelper pathHelper = new UrlPathHelper();
+		//Enable matrix variable
+		pathHelper.setRemoveSemicolonContent(false);
+		configurer.setUrlPathHelper(pathHelper);
+	}
+
+}

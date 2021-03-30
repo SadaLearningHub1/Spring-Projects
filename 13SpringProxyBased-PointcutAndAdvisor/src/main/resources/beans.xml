@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<!-- Business class configuration -->
+	<bean id="db" class="DemoBean"></bean>
+	
+	<!-- Advice Configuration -->
+	<bean id="before" class="WelcomeAdvice"></bean>
+	<bean id="after" class="GoodByeAdvice"></bean>
+	
+	<!-- Pointcut Configuration -->
+	<bean id="pointcut1" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="say*"></property>
+	</bean>
+	<bean id="pointcut2" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="pattern" value=".*[Mm].*"></property>
+	</bean>
+	
+	<!-- Advisor Configuration -->
+	<bean id="advisor1" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="pointcut1"></property>
+		<property name="advice" ref="before"></property>
+	</bean>
+	<bean id="advisor2" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="pointcut2"></property>
+		<property name="advice" ref="after"></property>
+	</bean>
+	
+	<!-- ProxyFactoryBean Configuration -->
+	<bean id="pfb1" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="db"></property>
+		<property name="proxyInterfaces" value="Demo"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>advisor1</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="pfb2" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="db"></property>
+		<property name="proxyInterfaces" value="Demo"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>advisor2</value>
+			</list>
+		</property>
+	</bean>
+</beans>

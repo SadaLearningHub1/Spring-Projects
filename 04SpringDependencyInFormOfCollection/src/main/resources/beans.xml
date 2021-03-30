@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="db" class="DemoBean">
+		<property name="theSet">
+			<set>
+				<value>sada</value>
+				<value>siva</value>
+				<value>rao</value>
+			</set>
+		</property>
+		<property name="theMap">
+			<map>
+				<entry key="k1" value="sada"></entry>
+				<entry key="k2" value="siva"></entry>
+				<entry key="k3" value="rao"></entry>
+			</map>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,17 @@
+import pack.Bike;
+import pack.Vehicle;
+
+public class TravelService {
+
+	public static void main(String[] args) {
+		Car c = new Car();
+		c.run();
+		
+		Vehicle c1 = (Vehicle) new Car();
+		c1.move();
+		Vehicle b = new Bike();
+		b.move();
+
+	}
+
+}

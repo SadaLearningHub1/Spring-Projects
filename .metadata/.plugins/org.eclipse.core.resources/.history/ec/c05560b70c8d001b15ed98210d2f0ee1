@@ -1,0 +1,20 @@
+package pack;
+
+public class TypesOFInjections {
+	//1. Setter Injection
+	//2. Construction injection
+	//3. Interface injection
+	
+	//Setter Injection
+	private Vehicle vehicle;
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+	
+	//Constructor Injection
+	public TypesOFInjections( Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+	
+	
+}

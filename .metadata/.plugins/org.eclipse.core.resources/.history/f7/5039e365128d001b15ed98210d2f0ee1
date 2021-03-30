@@ -1,0 +1,15 @@
+package pack;
+
+public class Demo {
+	private String str;
+	/*public Demo() {
+		
+	}
+	public Demo(String str) {
+		this.str = str;
+	}*/
+	public void SetStr(String str) {
+		this.str = str;
+	}
+
+}

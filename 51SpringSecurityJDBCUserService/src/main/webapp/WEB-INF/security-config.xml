@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<security:http use-expressions="true">
+		<security:intercept-url pattern="/index.jsp"
+			access="permitAll" />
+		<security:intercept-url pattern="/secure/admin.jsp"
+			access="hasRole('admin')" />
+		<security:intercept-url pattern="/secure/faculty.jsp"
+			access="hasRole('faculty')" />
+		<security:form-login login-page="/login.jsp" authentication-failure-url="/loginFailed.jsp" />
+		<security:logout logout-success-url="/logout.jsp" />
+	</security:http>
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<!-- <security:user-service>
+				<security:user name="sada" password="sada" authorities="admin"/>
+				<security:user name="siva" password="siva" authorities="faculty"/>
+			</security:user-service> -->
+			<security:jdbc-user-service data-source-ref="ds" 
+			users-by-username-query="select username, password, enabled from users where username=?" 
+			authorities-by-username-query="select u.username, ur.authority from users u, user_roles ur where u.u_id=ur.user_id and u.username=?"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<!-- DataSource Configuration -->
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/mysql"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+</beans>  

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 2 elements to &apos;05SpringBeansScopes/src/main/resources&apos;&#x0D;&#x0A;- Original project: &apos;05SpringBeansScopes&apos;&#x0D;&#x0A;- Destination element: &apos;05SpringBeansScopes/src/main/resources&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     beans2.xml&#x0D;&#x0A;     beans.xml&#x0D;&#x0A;- Update references to refactored element" description="Move files" destination="/src\/main\/resources" element1="src/main/java/beans2.xml" element2="src/main/java/beans.xml" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1528030014209" units="0" version="1.0"/>
+</session>
