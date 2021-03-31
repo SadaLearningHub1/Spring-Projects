@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id ="id1" class="com.sadalearninghub.RSpringSetterInjection.ListBean">
+		<property name="myList">
+			<list>
+				<value>Rajesh</value>
+				<value>Sada</value>
+				<value>XYZ</value>
+			</list>
+		</property>
+		<property name="myStudents">
+			<list>
+				<ref bean="s1"/>
+				<ref bean="s2"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="s1" class="com.sadalearninghub.RSpringSetterInjection.Student">
+		<property name="sId">
+			<value>1</value>
+		</property>
+		<property name="sName">
+			<value>Rajesh</value>
+		</property>
+		<property name="sMarks">
+			<value>100</value>
+		</property>
+	</bean>
+	<bean id="s2" class="com.sadalearninghub.RSpringSetterInjection.Student">
+		<property name="sId">
+			<value>2</value>
+		</property>
+		<property name="sName">
+			<value>sada</value>
+		</property>
+		<property name="sMarks">
+			<value>10</value>
+		</property>
+	</bean>
+	<bean id="id2" class="com.sadalearninghub.RSpringSetterInjection.SetBean">
+		<property name="mySet">
+			<set>
+				<value>RajeshSet</value>
+				<value>SadaSet</value>
+				<value>XYZSet</value>
+				<value>XYZSet</value>
+			</set>
+		</property>
+		<property name="myStudents">
+			<set>
+				<ref bean="ss1"/>
+				<ref bean="ss2"/>
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="ss1" class="com.sadalearninghub.RSpringSetterInjection.Student1">
+		<constructor-arg value="1"/>
+		<constructor-arg value="rajesh"/>
+		<constructor-arg value="100"/>
+	</bean>
+	<bean id="ss2" class="com.sadalearninghub.RSpringSetterInjection.Student1">
+		<constructor-arg value="2"/>
+		<constructor-arg value="sada"/>
+		<constructor-arg value="10"/>
+	</bean>
+	
+	<bean id="id3" class="com.sadalearninghub.RSpringSetterInjection.MapBean">
+		<property name="myMap">
+			<map>
+				<entry key="k1">
+					<value>RajeshMap</value>
+				</entry>
+				<entry key="k2">
+					<value>SadaMap</value>
+				</entry>
+				<entry key="k3">
+					<value>XYZMap</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="id4" class="com.sadalearninghub.RSpringSetterInjection.PropertiesBean">
+		<property name="myProperties">
+			<props>
+				<prop key="k1">RajeshProp</prop>
+				<prop key="k2">SadaProp</prop>
+				<prop key="k3">XYZProp</prop>
+			</props>
+		</property>
+	</bean>
+</beans>
