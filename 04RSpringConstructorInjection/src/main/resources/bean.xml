@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="id1"
+		class="com.sadalearninghub.RSpringSetterInjection.DemoBean">
+		<constructor-arg value="Rajesh" />
+		<constructor-arg value="password" />
+	</bean>
+
+	<!-- or -->
+	<!-- <bean id="id2"
+		class="com.sadalearninghub.RSpringSetterInjection.DemoBean">
+		<constructor-arg index="1" value="password" />
+		<constructor-arg index="0" value="Rajesh" />
+	</bean> -->
+
+	<!-- or -->
+	<!-- <bean id="id3"
+		class="com.sadalearninghub.RSpringSetterInjection.DemoBean">
+		<constructor-arg name="pwd" value="password" />
+		<constructor-arg name="uname" value="Rajesh" />
+	</bean> -->
+	
+	<bean id="id4" class="com.sadalearninghub.RSpringSetterInjection.StudentBean">
+		<constructor-arg name="student" ref="id5"/>
+	</bean>
+	<bean id="id5" class="com.sadalearninghub.RSpringSetterInjection.Student">
+		<constructor-arg index="0" value="1"/>
+		<constructor-arg index="1" value="Rajesh"/>
+	</bean>
+	
+	
+</beans>
