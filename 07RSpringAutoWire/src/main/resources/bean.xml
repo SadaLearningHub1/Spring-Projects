@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Singleton : it will create single object and it will serve
+	Prototype : it will craete new object for every time
+	request : it will create bean object request per once object
+	session : it will create bean object session per one object -->
+	
+	<bean id="eb1" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean1" autowire="byName"/>
+	<!-- or -->
+	<bean id="eb1" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean1">
+		<property name="eb2">
+			<ref bean="eb2"/>
+		</property>
+	</bean>
+	<bean id="eb2" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean2"/>
+	
+	<bean id="eb3" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean3" autowire="byType"/>
+	<bean id="eb4" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean4"/>
+	
+	<bean id="eb5" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean5" autowire="constructor"/>
+	<bean id="eb6" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean6"/>
+	
+	<bean id="eb5" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean7"/>
+	<bean id="eb6" class="com.sadalearninghub.RSpringSetterInjection.ExampleBean8"/>
+	
+</beans>

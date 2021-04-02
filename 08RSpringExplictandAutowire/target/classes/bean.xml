@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Singleton : it will create single object and it will serve
+	Prototype : it will craete new object for every time
+	request : it will create bean object request per once object
+	session : it will create bean object session per one object -->
+	
+	<bean id="eb1" class="com.sadalearninghub.ExampleBean1" autowire="byName">
+		<property name="myList">
+			<list>
+				<value>Rajesh</value>
+				<value>sada</value>
+				<value>salalearninghub</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="eb2" class="com.sadalearninghub.ExampleBean2"/>
+	
+</beans>
