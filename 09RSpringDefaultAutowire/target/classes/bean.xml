@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" 
+	>
+	
+	<!-- None - container doesn't validate the depenencies
+	Simple : Container checks for simple and collections are configured or not
+	Object : container checks for objects are configured or not
+	All : Simple+object -->
+	
+	<bean id="eb1" class="com.sadalearninghub.ExampleBean1" autowire="byName"/>
+	<bean id="eb2" class="com.sadalearninghub.ExampleBean2"/>
+	
+</beans>
