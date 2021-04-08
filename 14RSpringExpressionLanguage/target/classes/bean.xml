@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" 
+	default-autowire="byName">
+	
+	<bean id="id1" class="com.sadalearninghub.Author">
+		<!-- <property name="name">
+			<value>Rajesh</value>
+		</property> -->
+		<property name="name" value="Rajesh"></property>
+	</bean>
+	
+	<bean id="id2" class="com.sadalearninghub.Book">
+		<property name="authorName" value="#{id1.name}"></property>
+	</bean>
+	
+	<bean id="id3" class="com.sadalearninghub.TestBean1">
+		<property name="x" value="#{id4.y+10}"></property>
+	</bean>
+	
+	<bean id="id4" class="com.sadalearninghub.TestBean2">
+		<property name="y" value="10"/>
+	</bean>
+	
+	<!-- T() for static Methods -->
+	<bean id="id5" class="com.sadalearninghub.NumberGuss" scope="prototype">
+		<property name="randomNumber" value="#{T(java.lang.Math).random()}"/>
+	</bean>
+	
+	<bean id="id6" class="com.sadalearninghub.InstrumentList">
+		<property name="song" value="#{ss.selectSong().toUpperCase()}"></property>
+	</bean>
+	
+	<bean id="ss" class="com.sadalearninghub.SongSelector"/>
+	
+	<!-- ?. is used to prevent from NullPointerException -->
+	<bean id="id7" class="com.sadalearninghub.InstrumentList">
+		<property name="song" value="#{ss.selectAnotherSong()?.toUpperCase()}"></property>
+	</bean>
+	
+</beans>
