@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean id="db" class="DemoBean" />
+	
+	<!-- <advices configurations -->
+	<bean id="before" class="WelcomeAdvice" />
+	<bean id="after" class="GoodByeAdvice"/>
+	
+	<!-- pointcut configuration -->
+	<bean id="pointcut1" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="say*"/>
+	</bean>
+	<bean id="pointcut2" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="pattern" value="getMessage.*"/>
+	</bean>
+	
+	<!-- Advisor configuration -->
+	<bean id="advisor1" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="pointcut1"/>
+		<property name="advice" ref="before"/>
+	</bean>
+	<bean id="advisor2" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="pointcut2"/>
+		<property name="advice" ref="after"/>
+	</bean>
+	
+	
+	<bean id="pfb1"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- it is a depedency on target or business class so we use ref tag  to configure the dependency -->
+		<property name="target">
+			<ref bean="db" />
+		</property>
+		<!-- it inform about business interfaces -->
+		<property name="proxyInterfaces">
+			<value>Demo</value>
+		</property>
+		<!-- it informs about advices to be applied. this property is String[]. so we configure list tag in xml file -->
+		<property name="interceptorNames">
+			<list>
+				<value>advisor1</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean id="pfb2"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- it is a depedency on target or business class so we use ref tag  to configure the dependency -->
+		<property name="target">
+			<ref bean="db" />
+		</property>
+		<!-- it inform about business interfaces -->
+		<property name="proxyInterfaces">
+			<value>Demo</value>
+		</property>
+		<!-- it informs about advices to be applied. this property is String[]. so we configure list tag in xml file -->
+		<property name="interceptorNames">
+			<list>
+				<value>advisor2</value>
+			</list>
+		</property>
+	</bean>
+</beans>
