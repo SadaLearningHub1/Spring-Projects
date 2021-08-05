@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+		
+		
+		<context:annotation-config/>
+		
+		<bean id="scheduleJob" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+			<property name="period">
+				<value>5000</value>
+			</property>
+			<property name="delay">
+				<value>10000</value>
+			</property>
+			<property name="timerTask">
+				<ref bean="myTask"/>
+			</property>
+		</bean>
+		<bean id="myTask" class="com.sadalearninghub.RSpringJdkTimerService.task.MyTimerTask"/>
+		<bean id="wb" class="com.sadalearninghub.RSpringJdkTimerService.task.WorkBean"/>
+		<bean id="tfb" class="org.springframework.scheduling.timer.TimerFactoryBean">
+			<property name="scheduledTimerTasks">
+				<list>
+					<ref bean="scheduleJob"/>
+				</list>
+			</property>
+		</bean>
+		
+		
+		
+		
+		
+</beans>
