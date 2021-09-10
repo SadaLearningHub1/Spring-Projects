@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report>
+	<record id="1001" qty="980" sales="213100" staffName="sada">
+		<date>2010-07-29T00:00:00+05:30</date>
+	</record>
+	<record id="1002" qty="1080" sales="320200" staffName="rajesh">
+		<date>2010-09-30T00:00:00+05:30</date>
+	</record>
+	<record id="1003" qty="1200" sales="342197" staffName="abc">
+		<date>2020-09-30T00:00:00+05:30</date>
+	</record>
+</report>
